@@ -23,6 +23,14 @@ const loadVideos = async () => {
     }
 }
 
+function timeFormate(n) {
+    const hour = Math.floor(n / 3600);
+    const min = Math.floor((n % 3600) / 60);
+    const sec = n % 60;
+    return `${hour} hour : ${min} min : ${sec} sec`;
+}
+
+
 
 
 
@@ -50,7 +58,7 @@ const displayVideos = async (data) => {
     <img class="h-full w-full object-cover"
          src="${item.thumbnail}"
          alt="Shoes" />
-         ${item.others['posted_date']?.length === 0 ? "" : `<span class="absolute right-0 bottom-0 mr-2 mb-2 bg-black p-2 rounded-md text-white text-sm">${item.others['posted_date']}</span>`}
+         ${item.others['posted_date']?.length === 0 ? "" : `<span class="absolute right-0 bottom-0 mr-2 mb-2 bg-black p-2 rounded-md text-white text-sm">${timeFormate(item.others['posted_date'])}</span>`}
     
 </figure>
 
@@ -80,6 +88,8 @@ const displayVideos = async (data) => {
 
 loadCategories();
 loadVideos();
+
+
 
 
 
